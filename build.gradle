@@ -28,6 +28,7 @@ ext['springBootAdminVersion'] = '2.1.1'
 ext['springCloudVersion'] = 'Greenwich.M3'
 
 dependencies {
+	compile group: 'com.atlassian.commonmark', name: 'commonmark', version: '0.12.1'
 	implementation('org.springframework.boot:spring-boot-starter-actuator')
 	implementation('org.springframework.boot:spring-boot-starter-data-jpa')
 	implementation('org.springframework.boot:spring-boot-starter-groovy-templates')
