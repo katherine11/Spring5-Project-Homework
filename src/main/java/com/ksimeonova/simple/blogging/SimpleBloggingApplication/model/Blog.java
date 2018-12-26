@@ -1,7 +1,7 @@
 package com.ksimeonova.simple.blogging.SimpleBloggingApplication.model;
 
-import org.commonmark.node.Node;
 import org.hibernate.annotations.Type;
+import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -23,24 +23,25 @@ public class Blog {
     private String heading;
 
     @Column(name="author")
+    @Length(min = 4, max = 128)
     private String author;
 
-    @Type(type="text")
     @Column(name="text")
-    private Node text; //with markdown support
+    @Length(min = 128, max = 4096)
+    private String text; //with markdown support
 
-    @Type(type="text")
-    @Column(name="tags")
+    @ManyToMany
     private List<Tag> tags;
 
     @Type(type="text")
     @Column(name="image")
-    private Node image;
+    @Length(min = 16, max = 512)
+    private String imagePath;
 
     //status -> active by default
     @Type(type="yes_no")
     @Column(name="active_status")
-    private boolean activeStatus = true;
+    private Boolean activeStatus = true;
 
 
 }
